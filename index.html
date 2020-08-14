@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TestWork</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
+
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+    <link rel="stylesheet" href="css/jquery-ui.css">
+
+    <style type="text/css">    
+      #left { position: absolute; left: 0%; top: 0%; width: 50%; height:100% ; background-color: rgb(59, 59, 59);}
+      #right { position: absolute; right: 0%; top: 0%; width: 50%; height:100% ; background-color: rgb(32, 32, 32);} 
+      .container { position: absolute; width: auto; left: 5%; top:20%;}
+      #datetimepicker1 { position: absolute;}
+      .whiteblock { position: absolute; left:9%; margin-top: 60%; width: 60%; height:35% ; background-color: whitesmoke;}
+      .box{ position: absolute; border: none;
+         color:black; font-size: 17px; font-family: 'Arial Narrow Bold', sans-serif; 
+        text-align: center; width: 22%; height: 9%; padding-top:1%;padding-left:1%;
+        padding-right:1%;background-color: rgb(182, 182, 182);color: black; cursor:pointer}
+      .box:focus
+      {
+        background-color: rgb(196, 161, 73);
+        border: none;
+
+      }
+      
+     input[type="text"]
+      {
+        border:none;
+        font-size:26px;
+        padding-top: 2%;
+        color: black;
+        background-color:whitesmoke ;
+        font-weight: bold;
+        font-family:'Arial Narrow Bold', sans-serif
+
+      }
+      hr {
+    margin: 5px;
+    background-color: rgb(184, 183, 183); 
+    height: 2px; 
+
+    margin-left: 19px;
+    margin-right: 19px;
+   
+   }
+   input[type='radio'],
+label {
+  cursor: pointer;
+}
+
+input[type='radio'] {
+  position: relative;
+  height: 17px;
+  width: 17px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+input[type='radio']::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 2px solid rgb(196, 161, 73);
+}
+
+input[type='radio']:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(196, 161, 73);
+  transform: translate(-50%, -50%);
+  visibility: visible;
+}
+
+   </style>
+
+  </head>
+  <body style="margin:0%; position:  static;" >
+    <div id="left"></div>
+  
+    <div id="right">
+    <h3 style="color: whitesmoke; position: absolute;top: 10%; left: 26%;" >Pick date & time</h3>
+
+  <div class="container">
+    <div class="row">
+	  <div class="col-xs-12">
+	
+		  <div class="form-group">
+      <div class="input-group date" id="datepicker"></div>
+      
+      </div>
+		  
+	
+	  </div>
+	</div>
+  </div>
+
+  
+
+
+
+
+  <div class="whiteblock">
+    <input type="text" style="padding-left: 2%; color: black;"  id="day">
+    <hr>
+    <h4 style="padding-left: 3.5%; font-weight: bold; color:black,'Arial Narrow Bold', sans-serif ">Duration</h4>
+    <label style="padding-left: 3.5%;"><input type="radio" id="15min" onchange="check()"  name="timec" value="15min"> 15 min</label>
+    <label style="padding-left: 5%;"><input type="radio"  id="60min" onchange="check()" name="timec" value="60min"> 60 min</label>
+    <label style="padding-left: 5%;"><input type="radio" name="timec" onchange="check()" value="90min"> 90 min</label>
+
+    <!-- <div class="box" class="15" style="margin-top:5%; margin-left:4%;" ></div>
+    <div class="box" class="15" style="margin-top:5%; margin-left:28%;" ></div>
+    <div class="box" class="15" style="margin-top:5%; margin-left:52%;" ></div>
+    <div class="box" class="15" style="margin-top:5%; margin-left:75%;" ></div>
+
+    <div class="box" style="margin-top:15%; margin-left:4%;" >09:15 - 9:30</div>
+    <div class="box" style="margin-top:15%; margin-left:28%;" >09:30 - 9:45</div>
+    <div class="box" style="margin-top:15%; margin-left:52%;" >09:45 - 10:00</div>
+    <div class="box" style="margin-top:15%; margin-left:75%;" >10:00 - 10:15</div>
+
+    <div class="box" style="margin-top:25%; margin-left:4%;" >10:15 - 10:30</div>
+    <div class="box" style="margin-top:25%; margin-left:28%;" >10:30 - 10:45</div>
+    <div class="box" style="margin-top:25%; margin-left:52%;" >11:00 - 11:15</div>
+    <div class="box" style="margin-top:25%; margin-left:75%; " >11:15 - 11:30</div>
+
+    <div class="box" style="margin-top:35%; margin-left:4%;" >11:30 - 11:45</div>
+    <div class="box" style="margin-top:35%; margin-left:28%;" >11:45 - 12:00</div> -->
+    <!-- <div class="box" style="margin-top:35%; margin-left:52%;" >12:15 - 12:30</div> -->
+    <!-- <div class="box" style="margin-top:35%; margin-left:75%;" >12:30 - 12:45</div> -->
+
+   <input type="button"  class="box" class="15m" style="top:44%; left:5%;" name="time"  value=""/>  
+   <input type="button" class="box"  class ="15m" style="top:44%; left:30%;" name="time"  value=""/>  
+   <input type="button" class="box" class="15m" style="top:44%; left:55%;" name="time"  value=""/>  
+
+   <input type="button" class="box"  class="15m" style="top:57%; left:5%;" name="time"  value=""/>  
+   <input type="button" class="box"  class="15m" style="top:57%; left:31%;" name="time"  value=""/> 
+   <input type="button" class="box"  class="15m" style="top:57%; left:56%;" name="time"  value=""/> 
+
+   <input type="button" class="box"  class="15m" style="top:70%; left:5%;" name="time"  value=""/> 
+   <input type="button" class="box"  class="15m" style="top:70%; left:32%;" name="time"  value=""/> 
+   <input type="button" class="box"  class="15m" style="top:70%; left:58%;" name="time"  value=""/>
+   
+   <input type="button" class="box"  class="15m" style="top:83%; left:5%;" name="time"  value=""/> 
+   <input type="button" class="box"  class="15m" style="top:83%; left:33%;" name="time"  value=""/> 
+   <input type="button" class="box"  class="15m" style="top:83%; left:59%;" name="time"  value=""/> 
+
+
+
+
+   
+
+    <hr>
+
+
+
+  </div>
+  </div>
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script src="js/moment-with-locales.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript">
+  
+  
+  function check(){
+  var rarr=document.getElementsByName("timec");
+  if(rarr[0].checked){
+    var arr15 = ['08:15 - 08:30','08:30 - 08:45','08:45 - 09:00','09:00 - 09:15','09:15 - 09:30','09:30 - 09:45','10:15 - 10:30', '10:30 - 10:45','11:00 - 11:15'
+    ,'11:30 - 11:45', '11:45 - 12:00', '12:00 - 12:15'];
+    $(".box").val((i)=>arr15[i]);
+    
+  }
+  if(rarr[1].checked){
+
+    var arr60 = ['08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00 ', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00','14:00 - 15:00','15:00 - 16:00','16:00 - 17:00',
+    '17:00 - 18:00','18:00 - 19:00','19:00 - 20:00'];
+    $(".box").val((i)=>arr60[i]);
+  }
+  if(rarr[2].checked){
+
+    var arr90 = ['08:00 - 09:30','09:30 - 11:00','11:00 - 12:30','12:30 - 14:00','14:00 - 15:30', '15:30 - 17:00', '17:00 - 18:30','18:30 - 20:00','20:00 - 21:30','21:30 - 23:00',
+  '23:30-01:00','01:00 - 02:30']
+  $(".box").val((i)=>arr90[i]);
+
+  }
+
+
+
+ }
+ 
+  
+
+    $(function() {
+
+
+      
+
+      
+      
+
+
+    $( '#datepicker' ).datepicker(
+      {
+        inline:true,
+        firstDay:1,
+        numberOfMonths:[1,2],
+        dateFormat: "dd MM yy", 
+        showOtherMonths: true,
+        selectOtherMonths: true,
+        dayNamesMin : ['Sun', 'M', 'T', 'W', 'T', 'F', 'Sat'],
+        dayNamesShort: ['Sun', 'M', 'T', 'W', 'T', 'F', 'Sat'],
+        onSelect: function(){
+        var selected = $(this).val();
+        $('#day').val(selected);
+        }
+      }
+      
+    );
+    
+  });
+  </script>
+
+  </body>
+</html>
